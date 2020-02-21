@@ -248,12 +248,21 @@ public class QuizMain extends JFrame implements ActionListener {
 		int result = JOptionPane.showOptionDialog(null, "정답입니다!!!", "정답", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
 				null, btnString, btnString[0]);
 		if(result == 0) {
-			CheckPoint cp = new CheckPoint(aCount, wCount);
+			ScoreFrame cp = new ScoreFrame(aCount, wCount);
 			cp.setVisible(true);
+			setVisible(false);
 		}else if(result==1) {
 			randomIndex++;
 			if(randomIndex < list2.size()) {
 				rePrintText();
+			}else {
+				JOptionPane.showMessageDialog(null, "모든 문제를 푸셨습니다.");
+				ScoreFrame cp = new ScoreFrame(aCount, wCount);
+				cp.setVisible(true);
+				list.clear();
+				list2.clear();
+				randomIndex=0;
+				setVisible(false);
 			}
 		}
 		return result;
@@ -265,15 +274,16 @@ public class QuizMain extends JFrame implements ActionListener {
 		int result = JOptionPane.showOptionDialog(null, "오답입니다 ㅠㅠ", "오답", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
 				null, btnString, btnString[0]);
 		if(result == 0) {
-			CheckPoint cp = new CheckPoint(aCount, wCount);
+			ScoreFrame cp = new ScoreFrame(aCount, wCount);
 			cp.setVisible(true);
+			setVisible(false);
 		}else if(result==1) {
 			randomIndex++;
 			if(randomIndex < list.size()) {
 				rePrintText();
 			}else {
 				JOptionPane.showMessageDialog(null, "모든 문제를 푸셨습니다.");
-				CheckPoint cp = new CheckPoint(aCount, wCount);
+				ScoreFrame cp = new ScoreFrame(aCount, wCount);
 				cp.setVisible(true);
 				list.clear();
 				list2.clear();
