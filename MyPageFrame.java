@@ -38,6 +38,8 @@ public class MyPageFrame extends JFrame{
 		MainPanel mainpanel = new MainPanel(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\mypage9.png").getImage());
 		getContentPane().add(mainpanel, BorderLayout.SOUTH);
 		
+		setLocation(600, 200);
+		
 //		vo 확인용
 //		vo.setUserID("aaaa");
 //		vo.setUserName("홍길동");
