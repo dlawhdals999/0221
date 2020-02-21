@@ -105,8 +105,8 @@ public class ModifyFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		비밀번호를 입력하지 않았으면 안넘어감
-		if(PWFiled.getText().trim().length() == 0) {
+//		비밀번호를 입력하지 않았으면 안넘어감, 모든 조건문을 나갈수 있는 good 레이블을 
+		good : if(PWFiled.getText().trim().length() == 0) {
 			JOptionPane.showMessageDialog(null, "기존 비밀번호를 입력하지 않았습니다. 다시 입력해주세요");
 //		비밀번호를 입력했지만 일치하지 않으면 안넘어감
 		}else if(!PWFiled.getText().trim().equals(vo.getUserPW())){
@@ -119,11 +119,17 @@ public class ModifyFrame extends JFrame implements ActionListener{
 //				새 비밀번호에 입력하였는데 비밀번호 확인에는 입력하지 않았을때
 				if(PWCheckFiled.getText().trim().length() == 0) {
 					JOptionPane.showMessageDialog(null, "새 비밀번호 확인이 입력되지 않았습니다. 새비밀번호 확인을 입력해주세요");
+//					모든 조건문을 나가 밑으로 안넘어감(맨 밑에 있는 데이터 베이스에 저장안됨. 이문장을 사용 안하면 비밀번호 확인은
+//					입력되지 않았지만 닉네임은 데이터 베이스에 저장되는 현상이 발생할 수 있음)
+					break good;
 //				새 비밀번호와 비밀번호 확인이 일치하지 않으면 안넘어감
 				}else if(!newPWfield.getText().trim().equals(PWCheckFiled.getText().trim())) {
 					JOptionPane.showMessageDialog(null, "새 비밀번호와 새비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.");
 					newPWfield.setText("");
 					PWCheckFiled.setText("");
+//					모든 조건문을 나가 밑으로 안넘어감(맨 밑에 있는 데이터 베이스에 저장안됨. 이문장을 사용 안하면 비밀번호는
+//					일치하지 않지만 닉네임은 데이터 베이스에 저장되는 현상이 발생할 수 있음)
+					break good;
 //				잘 넘어오면 비밀번호가 바뀜
 				}else {
 					vo.setUserPW(newPWfield.getText().trim());
