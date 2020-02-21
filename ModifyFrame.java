@@ -105,7 +105,7 @@ public class ModifyFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		비밀번호를 입력하지 않았으면 안넘어감, 모든 조건문을 나갈수 있는 good 레이블을 
+//		비밀번호를 입력하지 않았으면 안넘어감, 모든 조건문을 나갈수 있는 good 레이블을 만들어줌
 		good : if(PWFiled.getText().trim().length() == 0) {
 			JOptionPane.showMessageDialog(null, "기존 비밀번호를 입력하지 않았습니다. 다시 입력해주세요");
 //		비밀번호를 입력했지만 일치하지 않으면 안넘어감
